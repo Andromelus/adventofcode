@@ -6,16 +6,11 @@ def calculate_frequency(freq, found, frequencies)
       f.each_line do |line|
         freq += line.to_i
         if store_frequency(freq, frequencies) == 2
-          found = true
+          return freq
         end          
       end
   end
-  if found == true
-    puts freq
-    return freq
-  else
     return calculate_frequency(freq, found, frequencies)
-  end
 end
 
 
@@ -28,8 +23,8 @@ def store_frequency(freq, frequencies)
   return frequencies[freq.to_s]
 end
 
-
-calculate_frequency(0, false, frequencies)
+duplicate_freq = calculate_frequency(0, false, frequencies)
+puts "The first duplicate frequency is #{duplicate_freq}"
 
 
 
